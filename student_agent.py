@@ -37,7 +37,7 @@ state_size = 16  # Based on SimpleTaxiEnv observation
 action_size = 6  # 6 possible actions
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = QNetwork(state_size, action_size).to(device)
-model.load_state_dict(torch.load("taxi_dqn.pth"))
+model.load_state_dict(torch.load("taxi_dqn.pth", map_location=device))
 model.eval()
 
 def get_action(obs):
